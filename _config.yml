@@ -17,9 +17,11 @@ defaults:
 description: Integração
 author:
   name: Stone Pagamentos
-  email: stone@imasters.com.br
+  email: contato@stone.com.br
   github: stone-pagamentos
-  twitter: stone
+  twitter: StonePagamentos
+  facebook: stonepagamentos
+  linkedin: 5231945
 
 rss_path: feed.xml
 categories_path: categories.html
