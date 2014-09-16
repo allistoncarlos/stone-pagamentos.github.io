@@ -16,9 +16,9 @@ defaults:
 
 description: Integração
 author:
-  name: Stone Developer
+  name: Stone Pagamentos
   email: stone@imasters.com.br
-  github: stonepagg
+  github: stone-pagamentos
   twitter: stone
 
 rss_path: feed.xml
