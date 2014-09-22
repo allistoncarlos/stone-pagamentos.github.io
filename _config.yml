@@ -25,5 +25,6 @@ author:
 rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
+documentation_path: documentation.html
 
 BASE_PATH:

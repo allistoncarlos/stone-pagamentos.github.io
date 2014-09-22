@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ page.title }}</title>
+	{% if page.description %}
+	<meta name="description" content="{{ page.description }}">
+	{% endif %}
+	<meta name="author" content="{{ site.author.name }}">
+
+	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ site.BASE_PATH }}/assets/css/landing.css" rel="stylesheet">
+
+	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.BASE_PATH }}/feed.xml">
+</head>
+
+<body class="landing">
+	<header class="main">
+		<div class="main-width">
+			<h1 class="title">Stone</h1>
+			<h2 class="subtitle">Stone Dev Center</h2>
+			<p>A Stone traz para o Brasil o que há de mais sofisticado em tecnologia de pagamento. Aceite cartões de crédito, débito e boleto com
+				controle total sobre sua solução de pagamentos e a mais fácil integração. Nosso time de especialistas vai te ajudar em todos os
+			passos, no que você precisar para ter a solução de pagamentos perfeita.</p>
+		</div>
+	</header>
+	<nav class="content-navigation">
+		<ul class="main-width">
+			<li class="item github">
+				<p>
+					<a href="https://github.com/stone-pagamentos">Conheça a biblioteca de códigos da Stone no Github</a>
+					O repositório de códigos da Stone está disponível em nosso perfil do Github.
+				</p>
+			</li>
+			<li class="item apiary">
+				<p>
+					<a href="http://docs.stone.apiary.io/">Documentação completa e ambiente de testes no Apiary</a>
+					Navegue pela documentação completa da Stone, tenha acesso ao servidor de testes (Mockup Server)
+					e interaja melhor com nossa API.
+				</p>
+			</li>
+			<li class="item email">
+				<p>
+					<a href="mailto:dev@stone.com.br">Suporte por email para desenvolvedores</a>
+					Tem dúvidas sobre a integração? Envie um email para dev@stone.com.br e vamos ajudá-lo, passo a passo, durante a integração.
+				</p>
+			</li>
+		</ul>
+	</nav>
+	<footer>
+		<div class="main-width">
+			<ul class="footer-links">
+				<li>
+					<h3>Precisa de ajuda?</h3>
+					<a class="phone" href="#">(11) 3003-0506</a>
+					<a class="email" href="mailto:meajuda@stone.com.br">meajuda@stone.com.br</a>
+				</li>
+				<li>
+					<h3>Contrate-nos</h3>
+					<a class="email" href="mailto:queroser@stone.com.br">queroser@stone.com.br</a>
+				</li>
+			</ul>
+			<p class="copyright">Copyright © 2014 - Stone Pagamentos S/A. Todos os direitos reservados.</p>
+		</div>
+	</footer>
+</body>
+</html>
