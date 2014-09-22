@@ -4,10 +4,35 @@ body{
 	color: #2c3e50;
 }
 
-.main-width {
-	width: 900px;
-	margin: 0px auto;
+.line {
+	width: 100%;
+	background: #2e5213;
+	margin: 0;
+	padding: 0;	
 }
+
+	.line:before, .line, .line:after {
+		content: ".";
+		display: block;
+		height: 8px;
+		overflow: hidden;
+		text-indent: -100px;
+	}
+
+	.line:before {
+		width: 33%;
+		background: #3b671b;
+		border-left: 400px solid #3c5736;
+		float: left;
+	}
+
+	.line:after {
+		width: 33%;
+		background: #3b671b;
+		border-right: 400px solid #3c5736;
+		float: right;
+		z-index: 1;
+	}
 
 header.main {
 	background: url("/assets/media/header.png") no-repeat top left;
@@ -57,10 +82,10 @@ header.main {
 		float: left;
 		font-size: 1em;
 		color: #a8a7a8;
+		margin-left: 87px;
 	}
 
 	.content-navigation .item:not(:first-child) {
-		margin-left: 50px;
 	}
 
 		.content-navigation .item a {
