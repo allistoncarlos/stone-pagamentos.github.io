@@ -40,12 +40,9 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
 É o processo de troca de mensagens entre o estabelecimento e o adquirente onde é verificado se portador do cartão possui ou não saldo suficiente para a realização de um pagamento. A diferença entre a mensagem de autorização com captura automática e com captura posterior, está no elemento `TxCaptr` que deve ser informado `true` para Autorização com Captura, ou `false` para Autorização com Captura posterior.
 
 #### XML de requisição comentado
+A mensagem de `AcceptorAuthorisationRequest` é enviada pelo estabelecimento para o adquirente, para checar junto ao banco que a conta associada ao cartão possui recursos para financiar o pagamento. Este controle inclui a validação dos dados do cartão e todos os dados adicionais previstos.
 
     <Document xmlns="urn:AcceptorAuthorisationRequestV02.1">
-        <!-- A mensagem de AcceptorAuthorisationRequest é enviada pelo estabelecimento para o
-             adquirente, para checar junto ao banco que a conta associada ao cartão possui
-             recursos para financiar o pagamento. Este controle inclui a validação dos dados
-             do cartão e todos os dados adicionais previstos. -->
         <AccptrAuthstnReq>
             <!-- Cabeçalho da requisição -->
             <Hdr>
@@ -156,10 +153,9 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
     </Document>
 
 #### XML de resposta comentado
+A mensagem `AcceptorAuthorisationResponse` é enviada pelo adquirente, para retornar o resultado da validação realizada pelo emissor sobre a operação de pagamento.
 
     <Document xmlns="urn:AcceptorAuthorisationResponseV02.1">
-        <!-- A mensagem AcceptorAuthorisationResponse é enviada pelo adquirente, para retornar
-             o resultado da validação realizada pelo emissor sobre a operação de pagamento. -->
         <AccptrAuthstnRspn>
             <!-- Cabeçalho da mensagem -->
             <Hdr>
@@ -283,30 +279,54 @@ O estabelecimento pode escolher enviar ou não a mensagem de captura para uma tr
 4. O adquirente retorna uma `AcceptorCompletionAdviceResponse`, reconhecendo o resultado e captura financeira da transação.
 
 #### XML de requisição de Captura comentado
+A mensagem `AcceptorCompletionAdvice` é enviada pelo estabelecimento para confirmar uma transação previamente autorizada. Esta mensagem também é utilizada como um pedido de desfazimento de transações.
 
     <Document xmlns="urn:AcceptorCompletionAdviceV02.1">
         <AccptrCmpltnAdvc>
+			<!-- Cabeçalho da mensagem. -->
             <Hdr>
+				<!-- Identifica o tipo de processo em que a mensagem se propõe.
+					 CMPV = Completion Advice
+					 RVRA = ReversalAdvice. -->
                 <MsgFctn>CMPV</MsgFctn>
+				<!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+			<!-- Informações relacionadas ao processo de captura ou desfazimento de uma autorização. -->
             <CmpltnAdvc>
+				<!-- Ambiente da transação. -->
                 <Envt>
+					<!-- Dados do estabelecimento. -->
                     <Mrchnt>
+						<!-- Identificação do estabelecimento comercial no adquirente.
+							 Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>00000000000000000000000000000321</Id>
                     </Mrchnt>
                 </Envt>
+				<!-- Dados da transação. -->
                 <Tx>
+					<!-- Identificação da transação definida pelo sistema que se comunica com
+						 o Host Stone. -->
                     <InitrTxId>123123123</InitrTxId>
+					<!-- Dados de identificação da transação atribuída pelo POI. -->
                     <TxId>
+						<!-- Data local e hora da transação atribuído pelo POI (ponto de
+							 interação). Este campo será ecoado pelo adquirente. -->
                         <TxDtTm>2014-06-11T17:15:44</TxDtTm>
+						<!-- Identificação da transação atribuída pelo POI (Ponto de
+							 interação). Este campo será ecoado pelo adquirente. -->
                         <TxRef>1111</TxRef>
                     </TxId>
+					<!-- Identificação da transação original -->
                     <OrgnlTx>
+						<!-- Identificação da transação definida pelo adquirente. -->
                         <RcptTxId>9CDF257AQKR</RcptTxId>
                     </OrgnlTx>
+					<!-- Detalhes da transação. -->
                     <TxDtls>
+						<!-- Moeda utilizada na transação em conformidade com a ISO 4217. -->
                         <Ccy>986</Ccy>
+						<!-- Valor total da transação em centavos. -->
                         <TtlAmt>100</TtlAmt>
                     </TxDtls>
                 </Tx>
@@ -315,24 +335,45 @@ O estabelecimento pode escolher enviar ou não a mensagem de captura para uma tr
     </Document>
 
 #### XML de resposta de Captura comentado
+A mensagem `AcceptorCompletionAdviceResponse` é enviada pelo adquirente para avisar o estabelecimento sobre o reconhecimento do resultado da operação de pagamento, bem como a transferência dos dados financeiros da transação contidas no `AcceptorCompletionAdvice`. Esta mensagem também é utilizada como resposta para o processo de “desfazimento de transações”.
 
     <Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1">
         <AccptrCmpltnAdvcRspn>
+			<!-- Cabeçalho da mensagem. -->
             <Hdr>
+				<!-- Identifica o tipo de processo em que a mensagem se propõe.
+					 CMPK = CompletionAdviceResponse ou
+					 RVRR = ReversalAdviceResponse. -->
                 <MsgFctn>CMPK</MsgFctn>
+				<!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+			<!-- Informações sobre a resposta da captura ou desfazimento de uma autorização. -->
             <CmpltnAdvcRspn>
+				<!-- Ambiente da transação. -->
                 <Envt>
+					<!-- Dados do estabelecimento. -->
                     <Mrchnt>
+						<!-- Identificação do estabelecimento comercial no adquirente.
+							 Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
                     </Mrchnt>
                 </Envt>
+				<!-- Dados da transação. -->
                 <Tx>
+					<!-- Dados da identificação da transação definida pelo POI. -->
                     <TxId>
+						<!-- Data e hora da transação -->
                         <TxDtTm>2014-03-12T15:17:59</TxDtTm>
+						<!-- Identificação da transação definida pelo ponto de interação (POI,
+							 estabelecimento, lojista, etc). Este campo será ecoado pelo adquirente. -->
                         <TxRef>7ca686eb242b4c0482c58961f5d3aac7</TxRef>
                     </TxId>
+					<!-- Resultado da transação.
+						 DECL = Declined,
+						 APPR = Approved,
+						 PART = Partial Approved,
+						 TECH = Technical Error. -->
                     <Rspn>APPR</Rspn>
                 </Tx>
             </CmpltnAdvcRspn>
