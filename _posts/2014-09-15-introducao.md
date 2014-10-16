@@ -157,110 +157,110 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
 
 #### Exemplo de resposta
 
-	<Document xmlns="urn:AcceptorAuthorisationResponseV02.1">
-		<!-- A mensagem AcceptorAuthorisationResponse é enviada pelo adquirente, para retornar
-			 o resultado da validação realizada pelo emissor sobre a operação de pagamento. -->
-		<AccptrAuthstnRspn>
-			<!-- Cabeçalho da mensagem -->
-			<Hdr>
-				<!-- Identifica o tipo de processo em que a mensagem se propõe.
-					 AUTP = AuthorisationResponse. -->
-				<MsgFctn>AUTP</MsgFctn>
-				<!-- Versão do protocolo utilizado na mensagem. -->
-				<PrtcolVrsn>2.0</PrtcolVrsn>
-				<!-- Dados para rastreamento da mensagem. -->
-				<Tracblt>
-					<!-- Data e hora da saída da mensagem no Host Stone. -->
-					<TracDtTmOut>2014-03-12T18:10:58</TracDtTmOut>
-				</Tracblt>
-			</Hdr>
-			<!-- Informações relacionadas à resposta da autorização. -->
-			<AuthstnRspn>
-				<!-- Ambiente da transação. -->
-				<Envt>
-					<!-- Dados do estabelecimento. -->
-					<MrchntId>
-						<!-- dentificação do estabelecimento comercial no adquirente. Também
-							 conhecido internamente como “SaleAffiliationKey”. -->
-						<Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
-					</MrchntId>
-					<!-- Dados do ponto de interação. -->
-					<PoiId>
-						<!-- Identificador do ponto de interação -->
-						<Id>2FB4C89A</Id>
-					</PoiId>
-				</Envt>
-				<!-- Informações da transação. -->
-				<Tx>
-					<!--- Dados de identificação da transação atribuída pelo POI -->
-					<TxId>
-						<!-- Data local e hora da transação atribuído pelo POI.
-							 Este campo será ecoado pelo adquirente. -->
-						<TxDtTm>2014-03-12T15:11:06</TxDtTm>
-						<!-- Identificação da transação atribuída pelo POI.
-							 Este campo será ecoado pelo adquirente. -->
-						<TxRef>06064f516a50483da7f189243c95ccca</TxRef>
-					</TxId>
-					<!-- Identificação da transação definida pela Stone. -->
-					<RcptTxId>00000034071000000215353</RcptTxId>
-					<!-- Detalhes da transação. -->
-					<TxDtls>
-						<!-- Moeda utilizada na transação em conformidade com a ISO 4217.
-							 986 = BRL = Real Brasileiro
+    <Document xmlns="urn:AcceptorAuthorisationResponseV02.1">
+        <!-- A mensagem AcceptorAuthorisationResponse é enviada pelo adquirente, para retornar
+             o resultado da validação realizada pelo emissor sobre a operação de pagamento. -->
+        <AccptrAuthstnRspn>
+            <!-- Cabeçalho da mensagem -->
+            <Hdr>
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                     AUTP = AuthorisationResponse. -->
+                <MsgFctn>AUTP</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+                <!-- Dados para rastreamento da mensagem. -->
+                <Tracblt>
+                    <!-- Data e hora da saída da mensagem no Host Stone. -->
+                    <TracDtTmOut>2014-03-12T18:10:58</TracDtTmOut>
+                </Tracblt>
+            </Hdr>
+            <!-- Informações relacionadas à resposta da autorização. -->
+            <AuthstnRspn>
+                <!-- Ambiente da transação. -->
+                <Envt>
+                    <!-- Dados do estabelecimento. -->
+                    <MrchntId>
+                        <!-- dentificação do estabelecimento comercial no adquirente. Também
+                             conhecido internamente como “SaleAffiliationKey”. -->
+                        <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                    </MrchntId>
+                    <!-- Dados do ponto de interação. -->
+                    <PoiId>
+                        <!-- Identificador do ponto de interação -->
+                        <Id>2FB4C89A</Id>
+                    </PoiId>
+                </Envt>
+                <!-- Informações da transação. -->
+                <Tx>
+                    <!--- Dados de identificação da transação atribuída pelo POI -->
+                    <TxId>
+                        <!-- Data local e hora da transação atribuído pelo POI.
+                             Este campo será ecoado pelo adquirente. -->
+                        <TxDtTm>2014-03-12T15:11:06</TxDtTm>
+                        <!-- Identificação da transação atribuída pelo POI.
+                             Este campo será ecoado pelo adquirente. -->
+                        <TxRef>06064f516a50483da7f189243c95ccca</TxRef>
+                    </TxId>
+                    <!-- Identificação da transação definida pela Stone. -->
+                    <RcptTxId>00000034071000000215353</RcptTxId>
+                    <!-- Detalhes da transação. -->
+                    <TxDtls>
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217.
+                             986 = BRL = Real Brasileiro
                              http://pt.wikipedia.org/wiki/ISO_4217 -->
-						<Ccy>986</Ccy>
-						<!-- Valor total autorizado em centavos. -->
-						<TtlAmt>100</TtlAmt>
-						<!-- Modalidade do cartão utilizado na transação.
-							 CHCK = Débito;
-							 CRDT = Crédito. -->
-						<AcctTp>CHCK</AcctTp>
-					</TxDtls>
-				</Tx>
-				<!-- Dados de resposta da transação. -->
-				<TxRspn>
-					<!-- Resultado da autorização. -->
-					<AuthstnRslt>
-						<!-- Dados da resposta da autorização. -->
-						<RspnToAuthstn>
-							<!-- Resposta da transação.
-								 DECL: Declined
-								 APPR: Aproved
-								 PART: PartialApproved
-								 TECH: TechinicalError -->
-							<Rspn>APPR</Rspn>
-							<!-- Código de resposta da autorização
-								 (equivalente ao campo 39 da ISO 8583 de 2003). -->
-							<RspnRsn>0000</RspnRsn>
-						</RspnToAuthstn>
-						<!-- Código de autorização retornado pelo emissor. -->
-						<AuthstnCd>007091</AuthstnCd>
-						<!-- Indica se a mensagem precisa ser capturada posteriormente. -->
-						<CmpltnReqrd>false</CmpltnReqrd>
-					</AuthstnRslt>
-					<!-- Informações sobre as ações a serem realizadas pelo POI.
-						 Neste caso, as informações a serem impressas no comprovante. -->
-					<Actn>
-						<!-- Tipo da ação a ser realizada pelo POI.
-							 PRNT = Imprimir mensagem;
-							 DISP = Exibir mensagem. ->
-						<ActnTp>PRNT</ActnTp>
-						<!-- Mensagem a ser impressa no terminal. -->
-						<MsgToPres>
-							<!-- A quem se destina a mensagem no contexto.
-								 CRCP = CardholderReceipt;
-								 MRCP = MerchantReceipt. -->
-							<MsgDstn>CRCP</MsgDstn>
-							<!-- Texto ou dados gráficos a serem impressos na tela ou em papel
-							no terminal. A mensagem será formatada conforme o campo PrintLineWidth
-							da requisição. -->
-							<MsgCntt>Informacoes formatadas do recibo aqui</MsgCntt>
-						</MsgToPres>
-					</Actn>
-				</TxRspn>
-			</AuthstnRspn>
-		</AccptrAuthstnRspn>
-	</Document>
+                        <Ccy>986</Ccy>
+                        <!-- Valor total autorizado em centavos. -->
+                        <TtlAmt>100</TtlAmt>
+                        <!-- Modalidade do cartão utilizado na transação.
+                             CHCK = Débito;
+                             CRDT = Crédito. -->
+                        <AcctTp>CHCK</AcctTp>
+                    </TxDtls>
+                </Tx>
+                <!-- Dados de resposta da transação. -->
+                <TxRspn>
+                    <!-- Resultado da autorização. -->
+                    <AuthstnRslt>
+                        <!-- Dados da resposta da autorização. -->
+                        <RspnToAuthstn>
+                            <!-- Resposta da transação.
+                                 DECL: Declined
+                                 APPR: Aproved
+                                 PART: PartialApproved
+                                 TECH: TechinicalError -->
+                            <Rspn>APPR</Rspn>
+                            <!-- Código de resposta da autorização
+                                 (equivalente ao campo 39 da ISO 8583 de 2003). -->
+                            <RspnRsn>0000</RspnRsn>
+                        </RspnToAuthstn>
+                        <!-- Código de autorização retornado pelo emissor. -->
+                        <AuthstnCd>007091</AuthstnCd>
+                        <!-- Indica se a mensagem precisa ser capturada posteriormente. -->
+                        <CmpltnReqrd>false</CmpltnReqrd>
+                    </AuthstnRslt>
+                    <!-- Informações sobre as ações a serem realizadas pelo POI.
+                         Neste caso, as informações a serem impressas no comprovante. -->
+                    <Actn>
+                        <!-- Tipo da ação a ser realizada pelo POI.
+                             PRNT = Imprimir mensagem;
+                             DISP = Exibir mensagem. ->
+                        <ActnTp>PRNT</ActnTp>
+                        <!-- Mensagem a ser impressa no terminal. -->
+                        <MsgToPres>
+                            <!-- A quem se destina a mensagem no contexto.
+                                 CRCP = CardholderReceipt;
+                                 MRCP = MerchantReceipt. -->
+                            <MsgDstn>CRCP</MsgDstn>
+                            <!-- Texto ou dados gráficos a serem impressos na tela ou em papel
+                            no terminal. A mensagem será formatada conforme o campo PrintLineWidth
+                            da requisição. -->
+                            <MsgCntt>Informacoes formatadas do recibo aqui</MsgCntt>
+                        </MsgToPres>
+                    </Actn>
+                </TxRspn>
+            </AuthstnRspn>
+        </AccptrAuthstnRspn>
+    </Document>
 
 ### Autorização com Captura
 
