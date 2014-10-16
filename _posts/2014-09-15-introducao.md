@@ -41,121 +41,119 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
 
 #### XML de requisição comentado
 
-	<Document xmlns="urn:AcceptorAuthorisationRequestV02.1">
-		<!--
-		A mensagem de AcceptorAuthorisationRequest é enviada pelo estabelecimento para o
-		adquirente, para checar junto ao banco que a conta associada ao cartão possui
-		recursos para financiar o pagamento. Este controle inclui a validação dos dados
-		do cartão e todos os dados adicionais previstos.
-		-->
-		<AccptrAuthstnReq>
-			<!-- Cabeçalho da requisição -->
-			<Hdr>
-				<!-- Identifica o tipo de processo em
-					 que a mensagem se propõe.
-					 Valor Fixo: “AUTQ” = AuthorisationRequest. -->
-				<MsgFctn>AUTQ</MsgFctn>
-				<!-- Versão do protocolo utilizado na mensagem. -->
-				<PrtcolVrsn>2.0</PrtcolVrsn>
-			</Hdr>
-			<!-- Dados da requisição de autorização. -->
-			<AuthstnReq>
-				<!-- Ambiente da transação. -->
-				<Envt>
-					<!-- Dados do estabelecimento. -->
-					<Mrchnt>
-						<!-- Identificação do estabelecimento. -->
-						<Id>
-							<!-- Identificação do estabelecimento comercial no adquirente.
-								 Também conhecido internamente como “SaleAffiliationKey”. -->
-							<Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
-						</Id>
-					</Mrchnt>
-					<!-- Dados do ponto de interação -->
-					<POI>
-						<!-- Identificação do ponto de interação -->
-						<Id>
-							<!-- Código de identificação do ponto de interação
-								 atribuído pelo estabelecimento. -->
-							<Id>2FB4C89A</Id>
-						</Id>
-						<!-- Capacidades do Ponto de interação. -->
-						<Cpblties>
-							<!-- Número máximo de colunas de cada linha a ser impressa
-								 no cupom. A quantidade mínima de colunas é de 38.
-								 Se o POI enviar menos do que 38, o Host Stone não irá
-								 retornar os dados do recibo. -->
-							<PrtLineWidth>50</PrtLineWidth>
-						</Cpblties>
-					</POI>
-					<!-- Dados do cartão utilizado na transação. -->
-					<Card>
-						<!-- Dados não criptografados do cartão utilizado na transação. -->
-						<PlainCardData>
-							<!-- Número do cartão. (Primary Account Number) -->
-							<PAN>4066559930861909</PAN>
-							<!-- Data de validade do cartão no formato “yyyy-MM”. -->
-							<XpryDt>2017-10</XpryDt>
-						</PlainCardData>
-					</Card>
-				</Envt>
-				<!-- Informações da transação a ser realizada. -->
-				<Cntxt>
-					<!-- Informações sobre o pagamento. -->
-					<PmtCntxt>
-						<!-- Modo da entrada dos dados do cartão.
-							 PHYS = Ecommerce ou Digitada; -->
-						<CardDataNtryMd>PHYS</CardDataNtryMd>
-						<!-- Tipo do canal de comunicação utilizado na transação.
-							 ECOM = Ecommerce ou Digitada; -->
-						<TxChanl>ECOM</TxChanl>
-					</PmtCntxt>
-				</Cntxt>
-				<!-- Informações da transação. -->
-				<Tx>
-					<!-- Identificação da transação definida pelo sistema que se
-						 comunica com o Host Stone. -->
-					<InitrTxId>123123123</InitrTxId>
-					<!-- Indica se os dados da transação devem ser capturados (true)
-						 ou não (false) imediatamente. -->
-					<TxCaptr>false</TxCaptr>
-					<!-- Dados de identificação da transação atribuída pelo
-						 POI (Ponto de interação). -->
-					<TxId>
-						<!-- Data local e hora da transação atribuídas pelo
-							 POI (ponto de interação). -->
-						<TxDtTm>2014-03-12T15:11:06</TxDtTm>
-						<!-- Identificação da transação definida pelo ponto de interação (POI,
-							 estabelecimento, lojista, etc). O formato é livre contendo no
-							 máximo 32 caracteres. -->
-						<TxRef>06064f516a50483da7f189243c95ccca</TxRef>
-					</TxId>
-					<!-- Detalhes da transação. -->
-					<TxDtls>
-						<!-- Moeda utilizada na transação em conformidade com a ISO 4217.
-							 986 = BRL = Real Brasileiro
-							 http://pt.wikipedia.org/wiki/ISO_4217 -->
-						<Ccy>986</Ccy>
-						<!-- Valor total da transação em centavos. -->
-						<TtlAmt>100</TtlAmt>
-						<!-- Modalidade do cartão utilizado na transação.
-							 CHCK = Débito;
-							 CRDT = Crédito. -->
-						<AcctTp>CRDT</AcctTp>
-						<!-- Os dados relativos à(s) parcela(s) ou a uma transação recorrente. -->
-						<RcrngTx>
-							<!-- Tipo de parcelamento.
-								 NONE = Nenhum,
-								 MCHT = Lojista -->
-							<InstlmtTp>NONE</InstlmtTp>
-							<!-- Número do total de parcelas. -->
-							<TtlNbOfPmts>0</TtlNbOfPmts>
-						</RcrngTx>
-					</TxDtls>
-				</Tx>
-			</AuthstnReq>
-		</AccptrAuthstnReq>
-	</Document>
+    <Document xmlns="urn:AcceptorAuthorisationRequestV02.1">
+        <!-- A mensagem de AcceptorAuthorisationRequest é enviada pelo estabelecimento para o
+             adquirente, para checar junto ao banco que a conta associada ao cartão possui
+             recursos para financiar o pagamento. Este controle inclui a validação dos dados
+             do cartão e todos os dados adicionais previstos. -->
+        <AccptrAuthstnReq>
+            <!-- Cabeçalho da requisição -->
+            <Hdr>
+                <!-- Identifica o tipo de processo em
+                     que a mensagem se propõe.
+                     Valor Fixo: “AUTQ” = AuthorisationRequest. -->
+                <MsgFctn>AUTQ</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <!-- Dados da requisição de autorização. -->
+            <AuthstnReq>
+                <!-- Ambiente da transação. -->
+                <Envt>
+                    <!-- Dados do estabelecimento. -->
+                    <Mrchnt>
+                        <!-- Identificação do estabelecimento. -->
+                        <Id>
+                            <!-- Identificação do estabelecimento comercial no adquirente.
+                                 Também conhecido internamente como “SaleAffiliationKey”. -->
+                            <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                        </Id>
+                    </Mrchnt>
+                    <!-- Dados do ponto de interação -->
+                    <POI>
+                        <!-- Identificação do ponto de interação -->
+                        <Id>
+                            <!-- Código de identificação do ponto de interação
+                                 atribuído pelo estabelecimento. -->
+                            <Id>2FB4C89A</Id>
+                        </Id>
+                        <!-- Capacidades do Ponto de interação. -->
+                        <Cpblties>
+                            <!-- Número máximo de colunas de cada linha a ser impressa
+                                 no cupom. A quantidade mínima de colunas é de 38.
+                                 Se o POI enviar menos do que 38, o Host Stone não irá
+                                 retornar os dados do recibo. -->
+                            <PrtLineWidth>50</PrtLineWidth>
+                        </Cpblties>
+                    </POI>
+                    <!-- Dados do cartão utilizado na transação. -->
+                    <Card>
+                        <!-- Dados não criptografados do cartão utilizado na transação. -->
+                        <PlainCardData>
+                            <!-- Número do cartão. (Primary Account Number) -->
+                            <PAN>4066559930861909</PAN>
+                            <!-- Data de validade do cartão no formato “yyyy-MM”. -->
+                            <XpryDt>2017-10</XpryDt>
+                        </PlainCardData>
+                    </Card>
+                </Envt>
+                <!-- Informações da transação a ser realizada. -->
+                <Cntxt>
+                    <!-- Informações sobre o pagamento. -->
+                    <PmtCntxt>
+                        <!-- Modo da entrada dos dados do cartão.
+                             PHYS = Ecommerce ou Digitada; -->
+                        <CardDataNtryMd>PHYS</CardDataNtryMd>
+                        <!-- Tipo do canal de comunicação utilizado na transação.
+                             ECOM = Ecommerce ou Digitada; -->
+                        <TxChanl>ECOM</TxChanl>
+                    </PmtCntxt>
+                </Cntxt>
+                <!-- Informações da transação. -->
+                <Tx>
+                    <!-- Identificação da transação definida pelo sistema que se
+                         comunica com o Host Stone. -->
+                    <InitrTxId>123123123</InitrTxId>
+                    <!-- Indica se os dados da transação devem ser capturados (true)
+                         ou não (false) imediatamente. -->
+                    <TxCaptr>false</TxCaptr>
+                    <!-- Dados de identificação da transação atribuída pelo
+                         POI (Ponto de interação). -->
+                    <TxId>
+                        <!-- Data local e hora da transação atribuídas pelo
+                             POI (ponto de interação). -->
+                        <TxDtTm>2014-03-12T15:11:06</TxDtTm>
+                        <!-- Identificação da transação definida pelo ponto de interação (POI,
+                             estabelecimento, lojista, etc). O formato é livre contendo no
+                             máximo 32 caracteres. -->
+                        <TxRef>06064f516a50483da7f189243c95ccca</TxRef>
+                    </TxId>
+                    <!-- Detalhes da transação. -->
+                    <TxDtls>
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217.
+                             986 = BRL = Real Brasileiro
+                             http://pt.wikipedia.org/wiki/ISO_4217 -->
+                        <Ccy>986</Ccy>
+                        <!-- Valor total da transação em centavos. -->
+                        <TtlAmt>100</TtlAmt>
+                        <!-- Modalidade do cartão utilizado na transação.
+                             CHCK = Débito;
+                             CRDT = Crédito. -->
+                        <AcctTp>CRDT</AcctTp>
+                        <!-- Os dados relativos à(s) parcela(s) ou a uma transação recorrente. -->
+                        <RcrngTx>
+                            <!-- Tipo de parcelamento.
+                                 NONE = Nenhum,
+                                 MCHT = Lojista -->
+                            <InstlmtTp>NONE</InstlmtTp>
+                            <!-- Número do total de parcelas. -->
+                            <TtlNbOfPmts>0</TtlNbOfPmts>
+                        </RcrngTx>
+                    </TxDtls>
+                </Tx>
+            </AuthstnReq>
+        </AccptrAuthstnReq>
+    </Document>
 
 #### Exemplo de resposta
 
