@@ -155,7 +155,7 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
         </AccptrAuthstnReq>
     </Document>
 
-#### Exemplo de resposta
+#### XML de resposta comentado
 
     <Document xmlns="urn:AcceptorAuthorisationResponseV02.1">
         <!-- A mensagem AcceptorAuthorisationResponse é enviada pelo adquirente, para retornar
