@@ -283,50 +283,50 @@ A mensagem `AcceptorCompletionAdvice` é enviada pelo estabelecimento para confi
 
     <Document xmlns="urn:AcceptorCompletionAdviceV02.1">
         <AccptrCmpltnAdvc>
-			<!-- Cabeçalho da mensagem. -->
+            <!-- Cabeçalho da mensagem. -->
             <Hdr>
-				<!-- Identifica o tipo de processo em que a mensagem se propõe.
-					 CMPV = Completion Advice
-					 RVRA = ReversalAdvice. -->
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                     CMPV = Completion Advice
+                     RVRA = ReversalAdvice. -->
                 <MsgFctn>CMPV</MsgFctn>
-				<!-- Versão do protocolo utilizado na mensagem. -->
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
-			<!-- Informações relacionadas ao processo de captura ou desfazimento de uma autorização. -->
+            <!-- Informações relacionadas ao processo de captura ou desfazimento de uma autorização. -->
             <CmpltnAdvc>
-				<!-- Ambiente da transação. -->
+                <!-- Ambiente da transação. -->
                 <Envt>
-					<!-- Dados do estabelecimento. -->
+                    <!-- Dados do estabelecimento. -->
                     <Mrchnt>
-						<!-- Identificação do estabelecimento comercial no adquirente.
-							 Também conhecido internamente como “SaleAffiliationKey”. -->
+                        <!-- Identificação do estabelecimento comercial no adquirente.
+                             Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>00000000000000000000000000000321</Id>
                     </Mrchnt>
                 </Envt>
-				<!-- Dados da transação. -->
+                <!-- Dados da transação. -->
                 <Tx>
-					<!-- Identificação da transação definida pelo sistema que se comunica com
-						 o Host Stone. -->
+                    <!-- Identificação da transação definida pelo sistema que se comunica com
+                         o Host Stone. -->
                     <InitrTxId>123123123</InitrTxId>
-					<!-- Dados de identificação da transação atribuída pelo POI. -->
+                    <!-- Dados de identificação da transação atribuída pelo POI. -->
                     <TxId>
-						<!-- Data local e hora da transação atribuído pelo POI (ponto de
-							 interação). Este campo será ecoado pelo adquirente. -->
+                        <!-- Data local e hora da transação atribuído pelo POI (ponto de
+                             interação). Este campo será ecoado pelo adquirente. -->
                         <TxDtTm>2014-06-11T17:15:44</TxDtTm>
-						<!-- Identificação da transação atribuída pelo POI (Ponto de
-							 interação). Este campo será ecoado pelo adquirente. -->
+                        <!-- Identificação da transação atribuída pelo POI (Ponto de
+                             interação). Este campo será ecoado pelo adquirente. -->
                         <TxRef>1111</TxRef>
                     </TxId>
-					<!-- Identificação da transação original -->
+                    <!-- Identificação da transação original -->
                     <OrgnlTx>
-						<!-- Identificação da transação definida pelo adquirente. -->
+                        <!-- Identificação da transação definida pelo adquirente. -->
                         <RcptTxId>9CDF257AQKR</RcptTxId>
                     </OrgnlTx>
-					<!-- Detalhes da transação. -->
+                    <!-- Detalhes da transação. -->
                     <TxDtls>
-						<!-- Moeda utilizada na transação em conformidade com a ISO 4217. -->
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217. -->
                         <Ccy>986</Ccy>
-						<!-- Valor total da transação em centavos. -->
+                        <!-- Valor total da transação em centavos. -->
                         <TtlAmt>100</TtlAmt>
                     </TxDtls>
                 </Tx>
@@ -339,41 +339,41 @@ A mensagem `AcceptorCompletionAdviceResponse` é enviada pelo adquirente para av
 
     <Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1">
         <AccptrCmpltnAdvcRspn>
-			<!-- Cabeçalho da mensagem. -->
+            <!-- Cabeçalho da mensagem. -->
             <Hdr>
-				<!-- Identifica o tipo de processo em que a mensagem se propõe.
-					 CMPK = CompletionAdviceResponse ou
-					 RVRR = ReversalAdviceResponse. -->
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                     CMPK = CompletionAdviceResponse ou
+                     RVRR = ReversalAdviceResponse. -->
                 <MsgFctn>CMPK</MsgFctn>
-				<!-- Versão do protocolo utilizado na mensagem. -->
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
-			<!-- Informações sobre a resposta da captura ou desfazimento de uma autorização. -->
+            <!-- Informações sobre a resposta da captura ou desfazimento de uma autorização. -->
             <CmpltnAdvcRspn>
-				<!-- Ambiente da transação. -->
+                <!-- Ambiente da transação. -->
                 <Envt>
-					<!-- Dados do estabelecimento. -->
+                    <!-- Dados do estabelecimento. -->
                     <Mrchnt>
-						<!-- Identificação do estabelecimento comercial no adquirente.
-							 Também conhecido internamente como “SaleAffiliationKey”. -->
+                        <!-- Identificação do estabelecimento comercial no adquirente.
+                             Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
                     </Mrchnt>
                 </Envt>
-				<!-- Dados da transação. -->
+                <!-- Dados da transação. -->
                 <Tx>
-					<!-- Dados da identificação da transação definida pelo POI. -->
+                    <!-- Dados da identificação da transação definida pelo POI. -->
                     <TxId>
-						<!-- Data e hora da transação -->
+                        <!-- Data e hora da transação -->
                         <TxDtTm>2014-03-12T15:17:59</TxDtTm>
-						<!-- Identificação da transação definida pelo ponto de interação (POI,
-							 estabelecimento, lojista, etc). Este campo será ecoado pelo adquirente. -->
+                        <!-- Identificação da transação definida pelo ponto de interação (POI,
+                             estabelecimento, lojista, etc). Este campo será ecoado pelo adquirente. -->
                         <TxRef>7ca686eb242b4c0482c58961f5d3aac7</TxRef>
                     </TxId>
-					<!-- Resultado da transação.
-						 DECL = Declined,
-						 APPR = Approved,
-						 PART = Partial Approved,
-						 TECH = Technical Error. -->
+                    <!-- Resultado da transação.
+                         DECL = Declined,
+                         APPR = Approved,
+                         PART = Partial Approved,
+                         TECH = Technical Error. -->
                     <Rspn>APPR</Rspn>
                 </Tx>
             </CmpltnAdvcRspn>
@@ -395,28 +395,50 @@ A reversão ou desfazimento de uma transação é realizado quando há alguma fa
 
     <Document xmlns="urn:AcceptorCompletionAdviceV02.1">
         <AccptrCmpltnAdvc>
+            <!-- Cabeçalho da mensagem. -->
             <Hdr>
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                CMPK = CompletionAdviceResponse ou
+                RVRR = ReversalAdviceResponse. -->
                 <MsgFctn>RVRA</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+            <!-- Informações relacionadas ao processo de captura ou desfazimento de uma autorização. -->
             <CmpltnAdvc>
+                <!-- Ambiente da transação. -->
                 <Envt>
+                    <!-- Dados do estabelecimento. -->
                     <Mrchnt>
+                        <!-- Container contendo o identificador do lojista. -->
                         <Id>
+                            <!-- Identificação do estabelecimento comercial no adquirente.
+                                 Também conhecido internamente como “SaleAffiliationKey”. -->
                             <Id>00000000000000000000000000000321</Id>
                         </Id>
                     </Mrchnt>
                 </Envt>
+                <!-- Dados da transação. -->
                 <Tx>
+                    <!-- Dados de identificação da transação atribuída pelo POI -->
                     <TxId>
+                        <!-- Data local e hora da transação atribuído pelo POI.
+                             Este campo será ecoado pelo adquirente. -->
                         <TxDtTm>2014-06-11T17:15:44</TxDtTm>
+                        <!-- Identificação da transação atribuída pelo POI.
+                             Este campo será ecoado pelo adquirente. -->
                         <TxRef>1111</TxRef>
                     </TxId>
+                    <!-- Identificação da transação original -->
                     <OrgnlTx>
+                        <!-- Identificação da transação definida pelo adquirente. -->
                         <RcptTxId>9CDF257AQKR</RcptTxId>
                     </OrgnlTx>
+                    <!-- Detalhes da transação. -->
                     <TxDtls>
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217. -->
                         <Ccy>986</Ccy>
+                        <!-- Valor total da transação em centavos. -->
                         <TtlAmt>100</TtlAmt>
                     </TxDtls>
                 </Tx>
@@ -425,24 +447,45 @@ A reversão ou desfazimento de uma transação é realizado quando há alguma fa
     </Document>
 
 #### XML de resposta de Desfazimento comentado
+A mensagem `AcceptorCompletionAdviceResponse` é enviada pelo adquirente para avisar o estabelecimento sobre o reconhecimento do resultado da operação de pagamento, bem como a transferência dos dados financeiros da transação contidas no AcceptorCompletionAdvice. Esta mensagem também é utilizada como resposta para o processo de “desfazimento de transações”.
 
     <Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1">
         <AccptrCmpltnAdvcRspn>
+            <!-- Cabeçalho da mensagem. -->
             <Hdr>
+                <!-- dentifica o tipo de processo em que a mensagem se propõe.
+                CMPK = CompletionAdviceResponse ou
+                RVRR = ReversalAdviceResponse. -->
                 <MsgFctn>RVRR</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+            <!-- Informações sobre a resposta da captura ou desfazimento de uma autorização. -->
             <CmpltnAdvcRspn>
+                <!-- Ambiente da transação. -->
                 <Envt>
+                    <!-- Dados do estabelecimento. -->
                     <Mrchnt>
+                        <!-- Identificação do estabelecimento comercial no adquirente.
+                             Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
                     </Mrchnt>
                 </Envt>
+                <!-- Dados da transação. -->
                 <Tx>
+                    <!-- Dados da identificação da transação definida pelo POI. -->
                     <TxId>
+                        <!-- Data e hora da transação -->
                         <TxDtTm>2014-03-12T15:17:59</TxDtTm>
+                        <!-- Identificação da transação definida pelo ponto de interação.
+                             Este campo será ecoado pelo adquirente. -->
                         <TxRef>7ca686eb242b4c0482c58961f5d3aac7</TxRef>
                     </TxId>
+                    <!-- Resultado da transação.
+                         DECL = Declined,
+                         APPR = Approved,
+                         PART = Partial Approved,
+                         TECH = Technical Error. -->
                     <Rspn>APPR</Rspn>
                 </Tx>
             </CmpltnAdvcRspn>
@@ -450,7 +493,6 @@ A reversão ou desfazimento de uma transação é realizado quando há alguma fa
     </Document>
 
 ### Cancelamento
-
 O cancelamento é o serviço que permite que um estabelecimento cancele uma transação concluída com êxito. É por vezes chamado de “desfazimento manual”. O prazo para é 180 dias para o cancelamento.
 
 #### XML de requisição de Cancelamento comentado
