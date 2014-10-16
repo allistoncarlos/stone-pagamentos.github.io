@@ -37,27 +37,7 @@ Todas as mensagens serão enviadas através do protocolo HTTP. Para o ambiente d
 
 ### Mensagens de Autorização
 
-É o processo de troca de mensagens entre o estabelecimento e o adquirente onde é verificado se portador do cartão possui ou não saldo suficiente para a realização de um pagamento.
-
-### Autorização com Captura
-
-É o processo de autorização de uma transação onde a captura financeira é realizada no momento do pedido de autorização.
-
-![autorização com captura](/assets/media/autorizacao-e-captura.png)
-
-1. O estabelecimento envia uma mensagem `AcceptorAuthorisationRequest` para o adquirente solicitando autorização, informando que deseja realizar a captura financeira atribuindo o valor da tag `<TxCaptr>` como `true`
-2. `AcceptorAuthorisationResponse` é devolvido pelo adquirente, informando ao estabelecimento sobre o êxito do pedido, uma vez que o adquirente tenha autorizado a transação sem a necessidade de envio de captura.
-
-### Autorização com Captura posterior
-
-O estabelecimento pode escolher enviar ou não a mensagem de captura para uma transação de crédito. Para as transações de débito, a transação de autorização já é realizada sem a necessidade da mensagem de captura, mesmo que a tag `<TxCaptr>` esteja preenchida como `false`.
-
-![autorização com captura posterior](/assets/media/autorizacao-com-captura-posterior.png)
-
-1. O estabelecimento envia uma `AcceptorAuthorisationRequest` ao adquirente solicitando a autorização da transação.
-2. Uma `AcceptorAuthorisationResponse` é devolvida pelo adquirente, informando ao estabelecimento sobre o êxito da autorização.
-3. Se a transação tiver sido concluída com êxito no lado do estabelecimento, o estabelecimento envia uma `AcceptorCompletionAdvice` para capturar a transação.
-4. O adquirente retorna uma `AcceptorCompletionAdviceResponse`, reconhecendo o resultado e captura financeira da transação.
+É o processo de troca de mensagens entre o estabelecimento e o adquirente onde é verificado se portador do cartão possui ou não saldo suficiente para a realização de um pagamento. A diferença entre a mensagem de autorização com captura automática e com captura posterior, está no elemento `TxCaptr` que deve ser informado `true` para Autorização com Captura, ou `false` para Autorização com Captura posterior.
 
 #### XML de requisição comentado
 
@@ -229,6 +209,26 @@ O estabelecimento pode escolher enviar ou não a mensagem de captura para uma tr
 			</AuthstnRspn>
 		</AccptrAuthstnRspn>
 	</Document>
+
+### Autorização com Captura
+
+É o processo de autorização de uma transação onde a captura financeira é realizada no momento do pedido de autorização.
+
+![autorização com captura](/assets/media/autorizacao-e-captura.png)
+
+1. O estabelecimento envia uma mensagem `AcceptorAuthorisationRequest` para o adquirente solicitando autorização, informando que deseja realizar a captura financeira atribuindo o valor da tag `<TxCaptr>` como `true`
+2. `AcceptorAuthorisationResponse` é devolvido pelo adquirente, informando ao estabelecimento sobre o êxito do pedido, uma vez que o adquirente tenha autorizado a transação sem a necessidade de envio de captura.
+
+### Autorização com Captura posterior
+
+O estabelecimento pode escolher enviar ou não a mensagem de captura para uma transação de crédito. Para as transações de débito, a transação de autorização já é realizada sem a necessidade da mensagem de captura, mesmo que a tag `<TxCaptr>` esteja preenchida como `false`.
+
+![autorização com captura posterior](/assets/media/autorizacao-com-captura-posterior.png)
+
+1. O estabelecimento envia uma `AcceptorAuthorisationRequest` ao adquirente solicitando a autorização da transação.
+2. Uma `AcceptorAuthorisationResponse` é devolvida pelo adquirente, informando ao estabelecimento sobre o êxito da autorização.
+3. Se a transação tiver sido concluída com êxito no lado do estabelecimento, o estabelecimento envia uma `AcceptorCompletionAdvice` para capturar a transação.
+4. O adquirente retorna uma `AcceptorCompletionAdviceResponse`, reconhecendo o resultado e captura financeira da transação.
 
 ### Reversão
 
