@@ -282,6 +282,63 @@ O estabelecimento pode escolher enviar ou não a mensagem de captura para uma tr
 3. Se a transação tiver sido concluída com êxito no lado do estabelecimento, o estabelecimento envia uma `AcceptorCompletionAdvice` para capturar a transação.
 4. O adquirente retorna uma `AcceptorCompletionAdviceResponse`, reconhecendo o resultado e captura financeira da transação.
 
+#### XML de requisição de Captura comentado
+
+    <Document xmlns="urn:AcceptorCompletionAdviceV02.1">
+        <AccptrCmpltnAdvc>
+            <Hdr>
+                <MsgFctn>CMPV</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CmpltnAdvc>
+                <Envt>
+                    <Mrchnt>
+                        <Id>00000000000000000000000000000321</Id>
+                    </Mrchnt>
+                </Envt>
+                <Tx>
+                    <InitrTxId>123123123</InitrTxId>
+                    <TxId>
+                        <TxDtTm>2014-06-11T17:15:44</TxDtTm>
+                        <TxRef>1111</TxRef>
+                    </TxId>
+                    <OrgnlTx>
+                        <RcptTxId>9CDF257AQKR</RcptTxId>
+                    </OrgnlTx>
+                    <TxDtls>
+                        <Ccy>986</Ccy>
+                        <TtlAmt>100</TtlAmt>
+                    </TxDtls>
+                </Tx>
+            </CmpltnAdvc>
+        </AccptrCmpltnAdvc>
+    </Document>
+
+#### XML de resposta de Captura comentado
+
+    <Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1">
+        <AccptrCmpltnAdvcRspn>
+            <Hdr>
+                <MsgFctn>CMPK</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CmpltnAdvcRspn>
+                <Envt>
+                    <Mrchnt>
+                        <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                    </Mrchnt>
+                </Envt>
+                <Tx>
+                    <TxId>
+                        <TxDtTm>2014-03-12T15:17:59</TxDtTm>
+                        <TxRef>7ca686eb242b4c0482c58961f5d3aac7</TxRef>
+                    </TxId>
+                    <Rspn>APPR</Rspn>
+                </Tx>
+            </CmpltnAdvcRspn>
+        </AccptrCmpltnAdvcRspn>
+    </Document>
+
 ### Reversão
 
 A reversão ou desfazimento de uma transação é realizado quando há alguma falha na transação. O prazo para a realização do desfazimento é de 5 dias e o tempo máximo de espera para de uma reposta `AcceptorCompletionAdvice` é de 50 segundos.
@@ -293,9 +350,154 @@ A reversão ou desfazimento de uma transação é realizado quando há alguma fa
 3. No caso de falha no estabelecimento, uma `AcceptorCompletionAdvice` é então enviada para o adquirente para desfazer a transação.
 4. O adquirente envia de volta uma `AcceptorCompletionAdviceResponse` reconhecendo o desfazimento.
 
+#### XML de requisição de Desfazimento comentado
+
+    <Document xmlns="urn:AcceptorCompletionAdviceV02.1">
+        <AccptrCmpltnAdvc>
+            <Hdr>
+                <MsgFctn>RVRA</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CmpltnAdvc>
+                <Envt>
+                    <Mrchnt>
+                        <Id>
+                            <Id>00000000000000000000000000000321</Id>
+                        </Id>
+                    </Mrchnt>
+                </Envt>
+                <Tx>
+                    <TxId>
+                        <TxDtTm>2014-06-11T17:15:44</TxDtTm>
+                        <TxRef>1111</TxRef>
+                    </TxId>
+                    <OrgnlTx>
+                        <RcptTxId>9CDF257AQKR</RcptTxId>
+                    </OrgnlTx>
+                    <TxDtls>
+                        <Ccy>986</Ccy>
+                        <TtlAmt>100</TtlAmt>
+                    </TxDtls>
+                </Tx>
+            </CmpltnAdvc>
+        </AccptrCmpltnAdvc>
+    </Document>
+
+#### XML de resposta de Desfazimento comentado
+
+    <Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1">
+        <AccptrCmpltnAdvcRspn>
+            <Hdr>
+                <MsgFctn>RVRR</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CmpltnAdvcRspn>
+                <Envt>
+                    <Mrchnt>
+                        <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                    </Mrchnt>
+                </Envt>
+                <Tx>
+                    <TxId>
+                        <TxDtTm>2014-03-12T15:17:59</TxDtTm>
+                        <TxRef>7ca686eb242b4c0482c58961f5d3aac7</TxRef>
+                    </TxId>
+                    <Rspn>APPR</Rspn>
+                </Tx>
+            </CmpltnAdvcRspn>
+        </AccptrCmpltnAdvcRspn>
+    </Document>
+
 ### Cancelamento
 
 O cancelamento é o serviço que permite que um estabelecimento cancele uma transação concluída com êxito. É por vezes chamado de “desfazimento manual”. O prazo para é 180 dias para o cancelamento.
+
+#### XML de requisição de Cancelamento comentado
+
+    <Document xmlns="urn:AcceptorCancellationRequestV02.1">
+        <AccptrCxlReq>
+            <Hdr>
+                <MsgFctn>CCAQ</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CxlReq>
+                <Envt>
+                    <Mrchnt>
+                        <Id>
+                            <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                        </Id>
+                    </Mrchnt>
+                    <POI>
+                        <Id>
+                            <Id>2FB4C89A</Id>
+                        </Id>
+                        <Cpblties>
+                            <PrtLineWidth>50</PrtLineWidth>
+                        </Cpblties>
+                    </POI>
+                </Envt>
+                <Tx>
+                    <TxCaptr>true</TxCaptr>
+                    <TxId>
+                        <TxDtTm>2014-03-12T15:09:00</TxDtTm>
+                        <TxRef>12345ABC</TxRef>
+                    </TxId>
+                    <TxDtls>
+                        <Ccy>986</Ccy>
+                        <TtlAmt>100</TtlAmt>
+                    </TxDtls>
+                    <OrgnlTx>
+                        <InitrTxId>123123123</InitrTxId>
+                        <RcptTxId>00000034071000000215346</RcptTxId>
+                    </OrgnlTx>
+                </Tx>
+            </CxlReq>
+        </AccptrCxlReq>
+    </Document>
+
+#### XML de resposta de Cancelamento comentado
+
+    <Document xmlns="urn:AcceptorCancellationResponseV02.1">
+        <AccptrCxlRspn>
+            <Hdr>
+                <MsgFctn>CCAP</MsgFctn>
+                <PrtcolVrsn>2.0</PrtcolVrsn>
+            </Hdr>
+            <CxlRspn>
+                <Envt>
+                    <MrchntId>
+                        <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
+                    </MrchntId>
+                </Envt>
+                <Tx>
+                    <TxCaptr>true</TxCaptr>
+                    <TxId>
+                        <TxDtTm>2014-03-12T15:09:00</TxDtTm>
+                        <TxRef>123456798</TxRef>
+                    </TxId>
+                    <TxDtls>
+                        <Ccy>986</Ccy>
+                        <TtlAmt>100</TtlAmt>
+                    </TxDtls>
+                </Tx>
+                <TxRspn>
+                    <AuthstnRslt>
+                        <RspnToAuthstn>
+                            <Rspn>APPR</Rspn>
+                            <RspnRsn>0000</RspnRsn>
+                        </RspnToAuthstn>
+                    </AuthstnRslt>
+                    <Actn>
+                        <ActnTp>PRNT</ActnTp>
+                        <MsgToPres>
+                            <MsgDstn>CRCP</MsgDstn>
+                            <MsgCntt>Informacoes formatadas do recibo aqui</MsgCntt>
+                        </MsgToPres>
+                    </Actn>
+                </TxRspn>
+            </CxlRspn>
+        </AccptrCxlRspn>
+    </Document>
 
 ### Cancelamento com Captura
 
