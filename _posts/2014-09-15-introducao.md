@@ -6,6 +6,21 @@ tags: [web, ecommerce, stone]
 fullview: true
 ---
 
+## Índice
+
+1. [Integração web e e-commerce](#integracao-web-e-e-commerce)
+2. [Protocolo](#protocolo)
+3. [Mensagens](#mensagens)
+   3.1. [Mensagem de Autorização](#mensagem-de-autorizacao)
+   3.2. [Autorização com Captura](#autorizacao-com-captura)
+   3.3. [Autorização com Captura posterior](#autorizacao-com-captura-posterior)
+   3.4. [Reversão](#reversao)
+   3.5. [Cancelamento](#cancelamento)
+   3.6. [Cancelamento com Captura](#cancelamento-com-captura)
+   3.7. [Cancelamento com Captura posterior](#cancelamento-com-captura-posterior)
+4. [Códigos de Exemplo de integração](#codigos-de-exemplo-de-integracao)
+
+
 ## Integração web e e-commerce
 
 O processo de compra em uma loja virtual começa sempre com o cliente consumidor escolhendo um ou mais produtos, adicionando-os ao carrinho, fazendo revisão, até chegar ao pagamento por aqueles produtos. O cliente consumidor é sempre o ponto de partida de qualquer integração web com sistemas de pagamento. Independentemente de ser um pagamento com recorrência, compra com um clique, autorização ou, até mesmo, uma captura futura, sempre haverá o participante cliente consumidor tomando a decisão por adquirir um produto ou serviço.
@@ -687,3 +702,5 @@ Neste momento, por algum motivo o estabelecimento precisa cancelar a transação
 6. O adquirente envia uma `AcceptorCancellationResponse` informando que o cancelamento pode ser realizado
 7. Uma vez que o estabelecimento considere que o cancelamento deve ser efetivado, ele deve enviar uma mensagem `AcceptorCancellationAdvice` para que seja realizada a captura deste cancelamento
 8. O adquirente envia `AcceptorCancellationAdviceResponse` efetivando o cancelamento.
+
+## Códigos de Exemplo de integração
