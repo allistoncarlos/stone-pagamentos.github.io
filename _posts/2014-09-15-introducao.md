@@ -704,3 +704,7 @@ Neste momento, por algum motivo o estabelecimento precisa cancelar a transação
 8. O adquirente envia `AcceptorCancellationAdviceResponse` efetivando o cancelamento.
 
 ## Códigos de Exemplo de integração
+
+Os códigos de exemplo abaixo, ilustram a troca de mensagens, com requisição e resposta, para Autorização com Captura automática, Autoricação com Captura posterior, Captura, Reversão de transações e Cancelamento. Os códigos estão disponíveis no Github Stone e podem ser acessados através dos links externos abaixo.
+
+[Códigos de exemplo em PHP](https://github.com/stone-pagamentos/code-sample-php)
