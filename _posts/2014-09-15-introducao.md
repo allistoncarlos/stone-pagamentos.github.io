@@ -496,41 +496,75 @@ A mensagem `AcceptorCompletionAdviceResponse` é enviada pelo adquirente para av
 O cancelamento é o serviço que permite que um estabelecimento cancele uma transação concluída com êxito. É por vezes chamado de “desfazimento manual”. O prazo para é 180 dias para o cancelamento.
 
 #### XML de requisição de Cancelamento comentado
+A mensagem `AcceptorCancellationRequest` é utilizada para realizar um pedido de cancelamento de uma transação autorizada. Se faz necessária uma mensagem de `AcceptorCancellationAdvice` para que o cancelamento seja confirmado caso o valor da tag `TransactionCapture<TxCaptr>` seja `false` .
 
     <Document xmlns="urn:AcceptorCancellationRequestV02.1">
         <AccptrCxlReq>
+            <!-- Cabeçalho da mensagem -->
             <Hdr>
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                     CCAQ = Cancellation Request. -->
                 <MsgFctn>CCAQ</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+            <!-- Informações relacionadas à requisição de cancelamento. -->
             <CxlReq>
+                <!-- Ambiente da transação. -->
                 <Envt>
+                    <!-- Dados do estabelecimento. -->
                     <Mrchnt>
+                        <!-- Identificação do estabelecimento comercial. -->
                         <Id>
+                            <!-- Identificação do estabelecimento comercial no adquirente.
+                                 Também conhecido internamente como “SaleAffiliationKey”. -->
                             <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
                         </Id>
                     </Mrchnt>
+                    <!-- Dados do Ponto de Interação. -->
                     <POI>
+                        <!-- Identificação do ponto de interação -->
                         <Id>
+                            <!-- Código de identificação do ponto de interação atribuído
+                                 pelo estabelecimento. -->
                             <Id>2FB4C89A</Id>
                         </Id>
+                        <!-- Capacidades do Ponto de interação. -->
                         <Cpblties>
+                            <!-- Número máximo de colunas de cada linha a ser impressa no cupom.
+                                 A quantidade mínima de colunas é de 38.
+                                 Se o POI enviar menos do que38, o Host Stone não irá retornar
+                                 os dados do recibo. -->
                             <PrtLineWidth>50</PrtLineWidth>
                         </Cpblties>
                     </POI>
                 </Envt>
+                <!-- Dados da transação. -->
                 <Tx>
+                    <!-- Indica se os dados da transação devem ser capturados `true` ou não
+                         `false` imediatamente. -->
                     <TxCaptr>true</TxCaptr>
+                    <!-- Identificação da transação atribuída pelo POI. -->
                     <TxId>
+                        <!-- Data e hora local da transação definidas pelo ponto de interação. -->
                         <TxDtTm>2014-03-12T15:09:00</TxDtTm>
+                        <!-- Identificação da transação definida pelo ponto de interação.
+                             O formato é livre contendo no máximo 32 caracteres. -->
                         <TxRef>12345ABC</TxRef>
                     </TxId>
+                    <!-- Detalhes da transação -->
                     <TxDtls>
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217.-->
                         <Ccy>986</Ccy>
+                        <!-- Valor total da transação em centavos. -->
                         <TtlAmt>100</TtlAmt>
                     </TxDtls>
+                    <!-- Dados da transação original -->
                     <OrgnlTx>
+                        <!-- Identificação da transação definida pelo sistema que se comunica
+                             com o Host Stone. -->
                         <InitrTxId>123123123</InitrTxId>
+                        <!-- Identificação da transação definida pelo adquirente. -->
                         <RcptTxId>00000034071000000215346</RcptTxId>
                     </OrgnlTx>
                 </Tx>
@@ -539,41 +573,83 @@ O cancelamento é o serviço que permite que um estabelecimento cancele uma tran
     </Document>
 
 #### XML de resposta de Cancelamento comentado
+A mensagem AcceptorCancellationResponse é respondida pelo adquirente com as informações sobre a requisição de cancelamento `AcceptorCancellationRequest`. Importante informar que os dados do recibo de cancelamento são enviados somente nesta mensagem.
 
     <Document xmlns="urn:AcceptorCancellationResponseV02.1">
         <AccptrCxlRspn>
+            <!-- Cabeçalho da mensagem -->
             <Hdr>
+                <!-- Identifica o tipo de processo em que a mensagem se propõe.
+                     CCAP = Cancellation Response. -->
                 <MsgFctn>CCAP</MsgFctn>
+                <!-- Versão do protocolo utilizado na mensagem. -->
                 <PrtcolVrsn>2.0</PrtcolVrsn>
             </Hdr>
+            <!-- Informações relacionadas à resposta de cancelamento. -->
             <CxlRspn>
+                <!-- Ambiente da transação. -->
                 <Envt>
+                    <!-- Dados do estabelecimento. -->
                     <MrchntId>
+                        <!-- Identificação do estabelecimento comercial no adquirente.
+                             Também conhecido internamente como “SaleAffiliationKey”. -->
                         <Id>BFDB58AB9A8A48828C2647E18B7F1114</Id>
                     </MrchntId>
                 </Envt>
+                <!-- Dados da transação. -->
                 <Tx>
+                    <!-- Indica se os dados da transação devem ser capturados `true`
+                         ou não `false` imediatamente. -->
                     <TxCaptr>true</TxCaptr>
+                    <!-- Identificação da transação atribuída pelo POI. -->
                     <TxId>
+                        <!-- Data e hora local da transação definidas pelo ponto de interação. -->
                         <TxDtTm>2014-03-12T15:09:00</TxDtTm>
+                        <!-- Identificação da transação definida pelo ponto de interação.
+                             Este campo será ecoado pelo adquirente. -->
                         <TxRef>123456798</TxRef>
                     </TxId>
+                    <!-- Detalhes da transação -->
                     <TxDtls>
+                        <!-- Moeda utilizada na transação em conformidade com a ISO 4217. -->
                         <Ccy>986</Ccy>
+                        <!-- Valor total da transação em centavos. -->
                         <TtlAmt>100</TtlAmt>
                     </TxDtls>
                 </Tx>
+                <!-- Dados de resposta da transação. -->
                 <TxRspn>
+                    <!-- Informações sobre o resultado da autorização a ser cancelada. -->
                     <AuthstnRslt>
+                        <!-- Dados de resposta da autorização a ser cancelada. -->
                         <RspnToAuthstn>
+                            <!-- Resposta da transação.
+                                 DECL: Declined
+                                 APPR: Aproved
+                                 PART: PartialApproved
+                                 TECH: TechinicalError -->
                             <Rspn>APPR</Rspn>
+                            <!-- Código de resposta da autorização
+                                 equivalente ao campo 39 da ISO 8583 de 2003. -->
                             <RspnRsn>0000</RspnRsn>
                         </RspnToAuthstn>
                     </AuthstnRslt>
+                    <!-- Informações sobre as ações a serem realizadas pelo POI.
+                         Neste caso, as informações a serem impressas no comprovante. -->
                     <Actn>
+                        <!-- Tipo da ação a ser realizada pelo POI.
+                             PRNT = Imprimir mensagem;
+                             DISP = Exibir mensagem. -->
                         <ActnTp>PRNT</ActnTp>
+                        <!-- Mensagem a ser impressa no terminal. -->
                         <MsgToPres>
+                            <!-- A quem se destina a mensagem no contexto.
+                                 CRCP = CardholderReceipt;
+                                 MRCP = MerchantReceipt. -->
                             <MsgDstn>CRCP</MsgDstn>
+                            <!-- Texto ou dados gráficos a serem impressos na tela ou em papel
+                                 no terminal. A mensagem será formatada conforme o campo
+                                 PrintLineWidth da requisição. -->
                             <MsgCntt>Informacoes formatadas do recibo aqui</MsgCntt>
                         </MsgToPres>
                     </Actn>
