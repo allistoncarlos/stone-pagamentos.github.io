@@ -8,17 +8,17 @@ fullview: true
 
 ## Índice
 
-1. [Integração web e e-commerce](#integracao-web-e-e-commerce)
+1. [Integração web e e-commerce](#integrao-web-e-e-commerce)
 2. [Protocolo](#protocolo)
 3. [Mensagens](#mensagens)
-   1. [Mensagem de Autorização](#mensagem-de-autorizacao)
-   2. [Autorização com Captura](#autorizacao-com-captura)
-   3. [Autorização com Captura posterior](#autorizacao-com-captura-posterior)
-   4. [Reversão](#reversao)
+   1. [Mensagens de Autorização](#mensagens-de-autorizao)
+   2. [Autorização com Captura](#autorizao-com-captura)
+   3. [Autorização com Captura posterior](#autorizao-com-captura-posterior)
+   4. [Reversão](#reverso)
    5. [Cancelamento](#cancelamento)
    6. [Cancelamento com Captura](#cancelamento-com-captura)
    7. [Cancelamento com Captura posterior](#cancelamento-com-captura-posterior)
-4. [Códigos de Exemplo de integração](#codigos-de-exemplo-de-integracao)
+4. [Códigos de Exemplo de integração](#cdigos-de-exemplo-de-integrao)
 
 
 ## Integração web e e-commerce
